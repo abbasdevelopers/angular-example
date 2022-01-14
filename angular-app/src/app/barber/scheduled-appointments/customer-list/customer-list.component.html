@@ -1,0 +1,27 @@
+<h1 *ngIf="customerGridItems.length <= 0">
+  No customer found
+</h1>
+<table *ngIf="customerGridItems.length > 0">
+  <tr>
+    <th>
+      Full name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Phone
+    </th>
+  </tr>
+  <tr *ngFor="let customer of customerGridItems; let index">
+    <td>
+      {{customer.fullName}}
+    </td>
+    <td>
+      {{customer.email}}
+    </td>
+    <td>
+      {{customer.phone}}
+    </td>
+  </tr>
+</table>

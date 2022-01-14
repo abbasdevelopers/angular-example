@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-8 order-md-1">
+    <h1>
+      Your info
+    </h1>
+    <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="fullName">Fullname <span class="text-muted">*</span></label>
+        <input type="text" class="form-control" id="fullName" formControlName="fullName" placeholder="Your full name.">
+        <label
+        for="fullName"
+        class="text-danger"
+        *ngIf="form.get('fullName').hasError('required') && (form.get('fullName').dirty || form.get('fullName').touched)">
+          Full name is required
+        </label>
+        <label
+        for="fullName"
+        class="text-danger"
+        *ngIf="form.get('fullName').hasError('maxLength') && (form.get('fullName').dirty || form.get('fullName').touched)">
+          Only 300 characters are allowed
+        </label>
+      </div>
+      <div class="mb-3">
+        <label for="email">Email <span class="text-muted">*</span></label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="you@example.com">
+        <label
+        for="email"
+        class="text-danger"
+        *ngIf="form.get('email').hasError('required') && (form.get('email').dirty || form.get('email').touched)">
+        Email is required
+        </label>
+        <label
+        for="email"
+        class="text-danger"
+        *ngIf="form.get('email').hasError('maxLength') && (form.get('email').dirty || form.get('email').touched)">
+          Only 300 characters are allowed
+        </label>
+        <label
+        for="email"
+        class="text-danger"
+        *ngIf="form.get('email').hasError('email') && (form.get('email').dirty || form.get('email').touched)">
+          Invalid email address
+        </label>
+      </div>
+      <div class="mb-3">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="0123456789">
+        <label
+        for="phone"
+        class="text-danger"
+        *ngIf="form.get('phone').hasError('maxLength') && (form.get('phone').dirty || form.get('phone').touched)">
+          Only 20 characters are allowed
+        </label>
+      </div>
+      <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!form.valid">Continue</button>
+    </form>
+  </div>
+</div>

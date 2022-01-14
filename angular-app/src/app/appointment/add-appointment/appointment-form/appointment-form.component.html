@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-8 order-md-1">
+    <h1>
+      Your info
+    </h1>
+    <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="title">Appointment title <span class="text-muted">*</span></label>
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Appointment title.">
+        <label
+        for="title"
+        class="text-danger"
+        *ngIf="form.get('title').hasError('required') && (form.get('title').dirty || form.get('title').touched)">
+          Title name is required
+        </label>
+        <label
+        for="title"
+        class="text-danger"
+        *ngIf="form.get('title').hasError('maxLength') && (form.get('title').dirty || form.get('title').touched)">
+          Only 255 characters are allowed
+        </label>
+      </div>
+      <div class="mb-3">
+        <label for="note">Appointment Note <span class="text-muted">*</span></label>
+        <input type="text" class="form-control" id="note" formControlName="note" placeholder="Appointment note">
+        <label
+        for="note"
+        class="text-danger"
+        *ngIf="form.get('note').hasError('maxLength') && (form.get('note').dirty || form.get('note').touched)">
+          Only 500 characters are allowed
+        </label>
+      </div>
+      <div class="mb-3">
+        <label for="startDateTime">Start Datetime</label>
+        <input type="datetime" class="form-control" id="startDateTime" formControlName="startDateTime">
+        <label
+        for="startDateTime"
+        class="text-danger"
+        *ngIf="form.get('startDateTime').hasError('required') && (form.get('startDateTime').dirty || form.get('startDateTime').touched)">
+          Start Datetime is required
+        </label>
+      </div>
+      <div class="mb-3">
+        <label for="endDateTime">End Datetime</label>
+        <input type="datetime" class="form-control" id="endDateTime" formControlName="endDateTime">
+        <label
+        for="endDateTime"
+        class="text-danger"
+        *ngIf="form.get('endDateTime').hasError('required') && (form.get('endDateTime').dirty || form.get('endDateTime').touched)">
+          End Datetime is required
+        </label>
+      </div>
+      <div class="mb-3">
+        <input type="hidden" class="form-control" id="customerId" formControlName="customerId">
+      </div>
+      <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!form.valid">Continue</button>
+    </form>
+  </div>
+</div>
